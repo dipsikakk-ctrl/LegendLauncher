@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEGEND — быстрый лаунчер Minecraft</title>
+  <meta name="description" content="LEGEND — бесплатный лаунчер Minecraft с оптимизацией FPS, модами, сборками и скинами. Запуск за 8 секунд, +180% к FPS на слабом железе.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23a3e635'/%3E%3Cpath d='M9 8h4v6h6V8h4v16h-4v-6h-6v6H9z' fill='%230e1210'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <!-- Шапка -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="logo" aria-label="LEGEND">
+        <span class="logo__mark">L</span>
+        <span class="logo__text">legend<em>launcher</em></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#features">Возможности</a>
+        <a href="#boost">Оптимизация</a>
+        <a href="#packs">Сборки</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+
+      <div class="header__auth">
+        <button class="btn btn--small btn--ghost" id="authOpenBtn">Войти</button>
+        <button class="profile" id="profileBtn" hidden>
+          <span class="profile__avatar">?</span>
+          <span class="profile__name">Профиль</span>
+        </button>
+      </div>
+
+      <a href="#download" class="btn btn--small btn--accent header__cta">
+        Скачать
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v9m0 0L3.5 6.5M7 10l3.5-3.5M2 13h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Герой -->
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__grid"></div>
+        <div class="hero__glow hero__glow--1"></div>
+        <div class="hero__glow hero__glow--2"></div>
+        <div class="cube cube--1"></div>
+        <div class="cube cube--2"></div>
+        <div class="cube cube--3"></div>
+        <div class="cube cube--4"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <div class="badge reveal">
+            <span class="badge__dot"></span>
+            Версия 4.2 — теперь с ускоренным рендером
+          </div>
+
+          <h1 class="hero__title reveal">
+            Лаунчер,<br>который <span class="accent">не тормозит</span>
+          </h1>
+
+          <p class="hero__sub reveal">
+            LEGEND выжимает максимум из твоего железа: +180% к FPS,
+            память под контролем и запуск игры за 8 секунд. Бесплатно,
+            без рекламы и лишних окон.
+          </p>
+
+          <div class="hero__actions reveal">
+            <a href="#download" class="btn btn--accent btn--big js-download">
+              Скачать лаунчер
+              <span class="btn__size">42 МБ</span>
+            </a>
+            <a href="#boost" class="btn btn--ghost btn--big">
+              Как это работает
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 8h8m0 0L8.5 4.5M12 8l-3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <div class="hero__meta reveal">
+            <div class="avatars" aria-hidden="true">
+              <span class="avatars__item">К</span>
+              <span class="avatars__item">М</span>
+              <span class="avatars__item">Д</span>
+              <span class="avatars__item">С</span>
+            </div>
+            <p><strong>2 400 000+</strong> игроков уже с нами<br><span>4.9 из 5 — оценка сообщества</span></p>
+          </div>
+        </div>
+
+        <!-- Макет лаунчера -->
+        <div class="hero__visual reveal">
+          <div class="launcher" id="launcher">
+            <div class="launcher__bar">
+              <span class="launcher__dot launcher__dot--red"></span>
+              <span class="launcher__dot launcher__dot--yellow"></span>
+              <span class="launcher__dot launcher__dot--green"></span>
+              <span class="launcher__title">LEGEND — 1.21.4</span>
+            </div>
+            <div class="launcher__body">
+              <div class="launcher__side">
+                <div class="launcher__avatar"></div>
+                <div class="launcher__navline"></div>
+                <div class="launcher__navline"></div>
+                <div class="launcher__navline launcher__navline--active"></div>
+                <div class="launcher__navline"></div>
+              </div>
+              <div class="launcher__main">
+                <div class="launcher__hero-block"></div>
+                <div class="launcher__row">
+                  <div class="launcher__chip">Fabric</div>
+                  <div class="launcher__chip">Оптимизация</div>
+                  <div class="launcher__chip">Скин HD</div>
+                </div>
+                <div class="launcher__play">
+                  <span class="launcher__play-icon"></span>
+                  Играть
+                </div>
+                <div class="fps">
+                  <div class="fps__label">FPS сейчас</div>
+                  <div class="fps__value"><span id="fpsCounter">243</span></div>
+                  <div class="fps__chart" aria-hidden="true">
+                    <i style="--h:38%"></i><i style="--h:56%"></i><i style="--h:44%"></i><i style="--h:72%"></i>
+                    <i style="--h:60%"></i><i style="--h:84%"></i><i style="--h:70%"></i><i style="--h:92%"></i>
+                    <i style="--h:78%"></i><i style="--h:96%"></i><i style="--h:88%"></i><i style="--h:100%"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero__chip hero__chip--1">
+            <span class="hero__chip-icon hero__chip-icon--green"></span>
+            Память: 1.2 / 4 ГБ
+          </div>
+          <div class="hero__chip hero__chip--2">
+            <span class="hero__chip-icon hero__chip-icon--lime"></span>
+            Запуск: 8 сек
+          </div>
+        </div>
+      </div>
+
+      <!-- Бегущая строка -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          <span>Без рекламы</span><i></i>
+          <span>Версии 1.7.10 — 1.21.4</span><i></i>
+          <span>+180% FPS</span><i></i>
+          <span>Моды в один клик</span><i></i>
+          <span>Свои сборки</span><i></i>
+          <span>Поддержка 24/7</span><i></i>
+          <span>Без рекламы</span><i></i>
+          <span>Версии 1.7.10 — 1.21.4</span><i></i>
+          <span>+180% FPS</span><i></i>
+          <span>Моды в один клик</span><i></i>
+          <span>Свои сборки</span><i></i>
+          <span>Поддержка 24/7</span><i></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- Цифры -->
+    <section class="stats">
+      <div class="container stats__grid">
+        <div class="stat reveal">
+          <div class="stat__num"><span class="counter" data-target="180" data-prefix="+">0</span><em>%</em></div>
+          <p>прирост FPS по сравнению<br>с обычным лаунчером</p>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num"><span class="counter" data-target="8">0</span><em>сек</em></div>
+          <p>от нажатия «Играть»<br>до загрузки мира</p>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num"><span class="counter" data-target="40" data-prefix="−">0</span><em>%</em></div>
+          <p>нагрузка на оперативную<br>память в игре</p>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num"><span class="counter" data-target="2.4" data-decimals="1">0</span><em>млн</em></div>
+          <p>игроков запускают Minecraft<br>через LEGEND</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Возможности -->
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="section__label">Возможности</span>
+          <h2 class="section__title">Всё нужное —<br>и ничего лишнего</h2>
+          <p class="section__sub">Мы убрали из лаунчера всё, что мешает играть, и добавили то, что действительно нужно каждый день.</p>
+        </div>
+
+        <div class="features">
+          <article class="feature reveal">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Ускорение FPS</h3>
+            <p>Собственный набор оптимизаций: быстрый рендер, умное выделение памяти и приоритет потоков. Игра идёт плавно даже на встройке.</p>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="3" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/><rect x="13" y="13" width="8" height="8" rx="2" stroke="currentColor" stroke-width="1.7"/></svg>
+            </div>
+            <h3>Моды и сборки</h3>
+            <p>Каталог из 12 000+ модов и готовых сборок. Ставятся в один клик, конфликты лаунчер чинит сам.</p>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Скины и плащи</h3>
+            <p>Загружай скины прямо в лаунчере, меняй их в пару кликов и добавляй плащи. Видно всем, кто тоже играет через LEGEND.</p>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Чистая защита</h3>
+            <p>Никакой рекламы, шпионских модулей и фоновых процессов. Лаунчер не следит за тобой и не ест трафик.</p>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 1 1-3-6.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M21 3v5h-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Авто-обновления</h3>
+            <p>Новые версии Minecraft появляются у нас в день релиза. Патчи лаунчера ставятся на лету, без перезапуска.</p>
+          </article>
+
+          <article class="feature reveal">
+            <div class="feature__icon">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="12" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M7 9h4M7 12h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Мультиаккаунты</h3>
+            <p>Неограниченное количество профилей: лицензия, Microsoft или локальный аккаунт. Переключение — одно нажатие.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Оптимизация -->
+    <section class="section boost" id="boost">
+      <div class="container boost__grid">
+        <div class="boost__content">
+          <span class="section__label reveal">Оптимизация</span>
+          <h2 class="section__title reveal">Железо дышит<br>полной грудью</h2>
+          <p class="section__sub reveal">
+            Мы переписали запуск игры с нуля: лаунчер отдаёт Minecraft
+            все ресурсы системы и уходит в фон. Цифры — средний результат
+            на ноутбуке 2019 года.
+          </p>
+
+          <ul class="checks reveal">
+            <li>
+              <span class="checks__mark"></span>
+              <div><strong>Умное выделение памяти</strong>— столько, сколько нужно конкретной сборке, без «съедания» 8 ГБ.</div>
+            </li>
+            <li>
+              <span class="checks__mark"></span>
+              <div><strong>Быстрый рендер-пайплайн</strong>— FPS выше, а картинка остаётся чистой, без мыла и вылетов.</div>
+            </li>
+            <li>
+              <span class="checks__mark"></span>
+              <div><strong>Режим «Слабое железо»</strong>— один тумблер, и даже Intel HD выдаёт стабильные 60+ FPS.</div>
+            </li>
+          </ul>
+
+          <a href="#download" class="btn btn--accent reveal">Проверить на своём ПК</a>
+        </div>
+
+        <div class="boost__visual reveal">
+          <div class="compare">
+            <div class="compare__head">
+              <span>Средний FPS в игре</span>
+              <span class="compare__tag">тест: 10 минут в шахте</span>
+            </div>
+
+            <div class="compare__row">
+              <div class="compare__label">
+                <span>Обычный лаунчер</span>
+                <em>62 fps</em>
+              </div>
+              <div class="compare__bar"><i class="compare__fill compare__fill--old" style="--w:31%"></i></div>
+            </div>
+
+            <div class="compare__row">
+              <div class="compare__label">
+                <span>LEGEND</span>
+                <em>176 fps</em>
+              </div>
+              <div class="compare__bar"><i class="compare__fill compare__fill--new" style="--w:88%"></i></div>
+            </div>
+
+            <div class="compare__row">
+              <div class="compare__label">
+                <span>LEGEND + режим разгона</span>
+                <em>243 fps</em>
+              </div>
+              <div class="compare__bar"><i class="compare__fill compare__fill--max" style="--w:100%"></i></div>
+            </div>
+
+            <div class="compare__foot">
+              <div class="compare__foot-item">
+                <strong>1.2 ГБ</strong>
+                <span>памяти вместо 3.4 ГБ</span>
+              </div>
+              <div class="compare__foot-item">
+                <strong>−64%</strong>
+                <span>просадок при подгрузке чанков</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Сборки -->
+    <section class="section" id="packs">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="section__label">Сборки</span>
+          <h2 class="section__title">Играй так,<br>как тебе нравится</h2>
+          <p class="section__sub">Готовые сборки с правильными настройками. Обновляются автоматически и не конфликтуют между собой.</p>
+        </div>
+
+        <div class="packs">
+          <article class="pack pack--green reveal">
+            <div class="pack__top">
+              <span class="pack__badge">Хит</span>
+              <span class="pack__version">1.21.4 · Fabric</span>
+            </div>
+            <h3>Legends Optimized</h3>
+            <p>Чистая ванилла + оптимизация. Для тех, кто хочет максимальный FPS и никаких изменений в игре.</p>
+            <div class="pack__foot">
+              <span>12 модов</span>
+              <span class="pack__arrow">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </article>
+
+          <article class="pack pack--blue reveal">
+            <div class="pack__top">
+              <span class="pack__badge pack__badge--alt">PvP</span>
+              <span class="pack__version">1.8.9 · Forge</span>
+            </div>
+            <h3>Combat Classic</h3>
+            <p>Классика для PvP: оптимизация, понятный интерфейс, FPS-буст и полная поддержка старых серверов.</p>
+            <div class="pack__foot">
+              <span>34 мода</span>
+              <span class="pack__arrow">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </article>
+
+          <article class="pack pack--sand reveal">
+            <div class="pack__top">
+              <span class="pack__badge pack__badge--alt">Приключения</span>
+              <span class="pack__version">1.20.1 · Forge</span>
+            </div>
+            <h3>Worlds & Quests</h3>
+            <p>Большие приключения: биомы, данжи, боссы и сюжетные квесты. Стабильная сборка на 200+ модов.</p>
+            <div class="pack__foot">
+              <span>212 модов</span>
+              <span class="pack__arrow">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9h10m0 0l-4-4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Скачать -->
+    <section class="section download" id="download">
+      <div class="container">
+        <div class="download__card reveal">
+          <div class="download__glow" aria-hidden="true"></div>
+          <div class="download__content">
+            <span class="section__label section__label--dark">Скачать</span>
+            <h2>Установи LEGEND<br>за пару минут</h2>
+            <p>Лаунчер весит 42 МБ и работает на Windows 7 и новее, macOS и Linux. Установка — «дальше, дальше, готово».</p>
+
+            <div class="os" id="osTabs">
+              <button class="os__tab is-active" data-os="windows">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4.2l6.2-.9v6H2V4.2zm7-1L16 2v7.2H9V3.2zM2 10.1h6.2v6L2 15.2v-5.1zm7 0h7V16l-7-1v-4.9z" fill="currentColor"/></svg>
+                Windows
+              </button>
+              <button class="os__tab" data-os="macos">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M12.6 9.6c0-2 1.6-2.9 1.7-3-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.2 2-1.4 2.4-.4 6 1 8 .6 1 1.4 2 2.4 2 1 0 1.3-.6 2.5-.6 1.1 0 1.5.6 2.5.6s1.7-1 2.3-1.9c.7-1.1 1-2.2 1-2.2s-1.9-.8-1.7-3.3zM10.7 3.3c.5-.7.9-1.6.8-2.5-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.4.8.1 1.7-.4 2.3-1.1z" fill="currentColor"/></svg>
+                macOS
+              </button>
+              <button class="os__tab" data-os="linux">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.5c2 0 2.6 1.6 2.6 3.2 0 1.9.8 2.7 1.8 4.2 1.2 1.7 2.1 3.2 2.1 4.7 0 1.7-1.3 2.4-2.7 2.4-.9 0-1.5-.3-2.2-.3-.5 0-1 .3-1.6.3s-1.3-.3-2.2-.3c-1.4 0-2.7.7-2.7 2.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="7.3" cy="6.4" r=".9" fill="currentColor"/><circle cx="10.7" cy="6.4" r=".9" fill="currentColor"/><path d="M6.6 9.2c.7.8 3.1.8 3.8 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                Linux
+              </button>
+            </div>
+
+            <a href="#" class="btn btn--accent btn--big download__btn js-download" id="downloadBtn">
+              <span class="download__btn-label">Скачать для Windows</span>
+              <span class="btn__size">.exe · 42 МБ</span>
+            </a>
+
+            <div class="download__note">
+              <span class="download__note-mark"></span>
+              <p id="osNote">Windows 7 / 8 / 10 / 11 · 64-bit · 4 ГБ ОЗУ</p>
+            </div>
+
+            <div class="download__reg">
+              <span class="download__reg-mark"></span>
+              <p>Скачивание открывается после регистрации — бесплатно, за минуту</p>
+            </div>
+          </div>
+
+          <div class="download__side">
+            <h4>Что внутри архива</h4>
+            <ul>
+              <li><span>01</span>Установщик без панелей и допов</li>
+              <li><span>02</span>Встроенные оптимизации FPS</li>
+              <li><span>03</span>Каталог модов и сборок</li>
+              <li><span>04</span>Автоматические обновления</li>
+            </ul>
+            <div class="download__trust">
+              <div class="download__trust-item">
+                <strong>0</strong>
+                <span>вирусов — проверено<br>40 антивирусами</span>
+              </div>
+              <div class="download__trust-item">
+                <strong>4.9</strong>
+                <span>средняя оценка<br>сообщества</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Вопросы -->
+    <section class="section faq" id="faq">
+      <div class="container faq__grid">
+        <div class="faq__head">
+          <span class="section__label reveal">Вопросы</span>
+          <h2 class="section__title reveal">Коротко<br>о главном</h2>
+          <p class="section__sub reveal">Не нашёл ответ? Загляни в Discord — там команда отвечает быстрее, чем крипер подкрадывается.</p>
+          <a href="#" class="btn btn--ghost reveal">Наш Discord</a>
+        </div>
+
+        <div class="faq__list reveal">
+          <details class="faq__item" open>
+            <summary>Лаунчер действительно бесплатный?<span class="faq__icon"></span></summary>
+            <div class="faq__body"><p>Да, полностью. Никакой подписки, доната за функции и скрытых платежей. Мы зарабатываем на необязательных косметических наборах, которые не влияют на игру.</p></div>
+          </details>
+
+          <details class="faq__item">
+            <summary>Как LEGEND повышает FPS?<span class="faq__icon"></span></summary>
+            <div class="faq__body"><p>Мы оптимизируем загрузку ресурсов, приоритеты потоков и выделение памяти ещё до запуска игры. Плюс встроенный набор модов оптимизации, который можно отключить в один клик.</p></div>
+          </details>
+
+          <details class="faq__item">
+            <summary>Работает ли с лицензией Microsoft?<span class="faq__icon"></span></summary>
+            <div class="faq__body"><p>Да. Поддерживаются лицензионные аккаунты Microsoft, а также локальные профили. Все профили можно держать в лаунчере одновременно и переключаться мгновенно.</p></div>
+          </details>
+
+          <details class="faq__item">
+            <summary>Безопасно ли это для моего компьютера?<span class="faq__icon"></span></summary>
+            <div class="faq__body"><p>Лаунчер не собирает данные и не запускает фоновых процессов. Каждый релиз проходит проверку 40 антивирусами, отчёт публикуется в Discord.</p></div>
+          </details>
+
+          <details class="faq__item">
+            <summary>Какие версии Minecraft поддерживаются?<span class="faq__icon"></span></summary>
+            <div class="faq__body"><p>Все — от 1.7.10 до 1.21.4, включая Forge, Fabric и NeoForge. Новые версии появляются в день выхода.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Подвал -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__row">
+        <a href="#" class="logo">
+          <span class="logo__mark">L</span>
+          <span class="logo__text">legend<em>launcher</em></span>
+        </a>
+        <nav class="footer__nav">
+          <a href="#features">Возможности</a>
+          <a href="#boost">Оптимизация</a>
+          <a href="#packs">Сборки</a>
+          <a href="#download">Скачать</a>
+          <a href="#faq">Вопросы</a>
+        </nav>
+        <div class="footer__social">
+          <a href="#" aria-label="Discord">Dc</a>
+          <a href="#" aria-label="Telegram">Tg</a>
+          <a href="#" aria-label="YouTube">Yt</a>
+          <a href="#" aria-label="VK">Vk</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 LEGEND. Не является продуктом Mojang AB. Minecraft — торговая марка Mojang AB.</p>
+        <div class="footer__links">
+          <a href="#">Лицензия</a>
+          <a href="#">Конфиденциальность</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Вход / регистрация -->
+  <div class="modal" id="authModal" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__card" role="dialog" aria-label="Вход и регистрация">
+      <button class="modal__close" data-close aria-label="Закрыть">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="auth">
+        <h3 class="auth__title">Добро пожаловать в <span class="accent-inline">LEGEND</span></h3>
+        <p class="auth__sub">Войди или создай аккаунт — дальше откроется личный кабинет.</p>
+
+        <div class="auth__tabs" id="authTabs">
+          <button class="auth__tab is-active" data-auth-tab="login">Вход</button>
+          <button class="auth__tab" data-auth-tab="register">Регистрация</button>
+        </div>
+
+        <form class="auth__form is-active" data-auth-view="login" novalidate>
+          <label class="field">
+            <span class="field__label">E-mail</span>
+            <input type="email" name="email" placeholder="you@mail.ru" autocomplete="email">
+            <span class="field__error"></span>
+          </label>
+          <label class="field">
+            <span class="field__label">Пароль</span>
+            <input type="password" name="password" placeholder="••••••••" autocomplete="current-password">
+            <span class="field__error"></span>
+          </label>
+          <button type="button" class="link auth__forgot" data-go="forgot">Забыли пароль?</button>
+          <button type="submit" class="btn btn--accent btn--big auth__submit">Войти</button>
+        </form>
+
+        <form class="auth__form" data-auth-view="register" novalidate>
+          <label class="field">
+            <span class="field__label">Никнейм</span>
+            <input type="text" name="nickname" placeholder="Например, Steve_2010" autocomplete="nickname">
+            <span class="field__error"></span>
+          </label>
+          <label class="field">
+            <span class="field__label">E-mail</span>
+            <input type="email" name="email" placeholder="you@mail.ru" autocomplete="email">
+            <span class="field__error"></span>
+          </label>
+          <label class="field">
+            <span class="field__label">Пароль</span>
+            <input type="password" name="password" placeholder="Минимум 6 символов" autocomplete="new-password">
+            <span class="field__error"></span>
+          </label>
+          <label class="field">
+            <span class="field__label">Повтори пароль</span>
+            <input type="password" name="password2" placeholder="••••••••" autocomplete="new-password">
+            <span class="field__error"></span>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="agree">
+            <span class="check__box"></span>
+            <span class="check__text">Согласен с <a href="#">правилами</a> и обработкой данных</span>
+          </label>
+          <span class="field__error field__error--center" data-agree-error></span>
+          <button type="submit" class="btn btn--accent btn--big auth__submit">Создать аккаунт</button>
+        </form>
+
+        <form class="auth__form" data-auth-view="verify" novalidate>
+          <p class="auth__note">Мы отправили код на <b class="accent-inline" data-verify-email>твою почту</b>. Введи его ниже — и аккаунт готов.</p>
+          <div class="code-hint" hidden>
+            <div class="code-hint__head">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3" width="13" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 4l6 4.5L14 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span>Письмо с кодом</span>
+            </div>
+            <div class="code-hint__value">Твой код: <b class="code-hint__code">000000</b></div>
+            <button type="button" class="link code-hint__copy">Скопировать код</button>
+          </div>
+          <label class="field">
+            <span class="field__label">Код из письма</span>
+            <input class="input-code" type="text" name="code" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="one-time-code">
+            <span class="field__error"></span>
+          </label>
+          <button type="submit" class="btn btn--accent btn--big auth__submit">Подтвердить</button>
+          <div class="auth__links">
+            <button type="button" class="link" data-resend="verify">Отправить код ещё раз</button>
+            <button type="button" class="link" data-go="login">Назад ко входу</button>
+          </div>
+        </form>
+
+        <form class="auth__form" data-auth-view="forgot" novalidate>
+          <p class="auth__note">Укажи e-mail — пришлём код для сброса пароля.</p>
+          <label class="field">
+            <span class="field__label">E-mail</span>
+            <input type="email" name="email" placeholder="you@mail.ru" autocomplete="email">
+            <span class="field__error"></span>
+          </label>
+          <button type="submit" class="btn btn--accent btn--big auth__submit">Отправить код</button>
+          <div class="auth__links">
+            <button type="button" class="link" data-go="login">Назад ко входу</button>
+          </div>
+        </form>
+
+        <form class="auth__form" data-auth-view="reset" novalidate>
+          <p class="auth__note">Введи код из письма и придумай новый пароль.</p>
+          <div class="code-hint" hidden>
+            <div class="code-hint__head">
+              <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="3" width="13" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 4l6 4.5L14 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span>Письмо с кодом</span>
+            </div>
+            <div class="code-hint__value">Твой код: <b class="code-hint__code">000000</b></div>
+            <button type="button" class="link code-hint__copy">Скопировать код</button>
+          </div>
+          <label class="field">
+            <span class="field__label">Код из письма</span>
+            <input class="input-code" type="text" name="code" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="one-time-code">
+            <span class="field__error"></span>
+          </label>
+          <label class="field">
+            <span class="field__label">Новый пароль</span>
+            <input type="password" name="password" placeholder="Минимум 6 символов" autocomplete="new-password">
+            <span class="field__error"></span>
+          </label>
+          <label class="field">
+            <span class="field__label">Повтори пароль</span>
+            <input type="password" name="password2" placeholder="••••••••" autocomplete="new-password">
+            <span class="field__error"></span>
+          </label>
+          <button type="submit" class="btn btn--accent btn--big auth__submit">Сменить пароль</button>
+          <div class="auth__links">
+            <button type="button" class="link" data-resend="reset">Отправить код ещё раз</button>
+            <button type="button" class="link" data-go="login">Назад ко входу</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Личный кабинет -->
+  <div class="modal" id="cabinetModal" aria-hidden="true">
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__card modal__card--cabinet" role="dialog" aria-label="Личный кабинет">
+      <button class="modal__close" data-close aria-label="Закрыть">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+
+      <div class="cabinet">
+        <div class="cabinet__head">
+          <div class="cabinet__avatar" id="cabinetAvatar">Л</div>
+          <div class="cabinet__who">
+            <h3 class="cabinet__name" id="cabinetName">Игрок</h3>
+            <p class="cabinet__mail" id="cabinetMail">—</p>
+          </div>
+          <span class="cabinet__badge" id="cabinetSince">Участник</span>
+        </div>
+
+        <div class="cabinet__stats">
+          <div class="cabinet__stat"><strong>4.2</strong><span>версия клиента</span></div>
+          <div class="cabinet__stat"><strong>0</strong><span>сборок установлено</span></div>
+          <div class="cabinet__stat"><strong>0 ч</strong><span>в игре</span></div>
+        </div>
+
+        <h4 class="cabinet__title">Оформление</h4>
+        <p class="cabinet__sub">Выбери тему — она применится ко всему сайту сразу.</p>
+
+        <div class="themes" id="themes">
+          <button class="theme is-active" data-theme-value="lime"><span class="theme__dots"><i style="background:#a3e635"></i><i style="background:#7cc21e"></i></span>Лайм</button>
+          <button class="theme" data-theme-value="ocean"><span class="theme__dots"><i style="background:#56b3ff"></i><i style="background:#2e8fe0"></i></span>Океан</button>
+          <button class="theme" data-theme-value="sunset"><span class="theme__dots"><i style="background:#ff8a4c"></i><i style="background:#e56a2b"></i></span>Закат</button>
+          <button class="theme" data-theme-value="grape"><span class="theme__dots"><i style="background:#b18cff"></i><i style="background:#8f63f0"></i></span>Лаванда</button>
+          <button class="theme" data-theme-value="rose"><span class="theme__dots"><i style="background:#ff6fa5"></i><i style="background:#e04a86"></i></span>Малина</button>
+          <button class="theme" data-theme-value="mono"><span class="theme__dots"><i style="background:#d7ded3"></i><i style="background:#a9b3a3"></i></span>Графит</button>
+        </div>
+
+        <div class="cabinet__actions">
+          <a href="#" class="btn btn--accent js-download">Скачать клиент</a>
+          <button class="btn btn--ghost" id="logoutBtn">Выйти</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

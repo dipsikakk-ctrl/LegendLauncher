@@ -1,0 +1,14 @@
+{
+  "name": "legend-launcher-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Сайт LEGEND — лаунчер Minecraft: авторизация, коды на почту, защита",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemailer": "^6.10.0"
+  }
+}

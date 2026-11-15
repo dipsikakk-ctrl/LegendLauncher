@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LEGEND — быстрый лаунчер Minecraft</title>
+  <title>LEGEND — легендарный лаунчер Minecraft</title>
   <meta name="description" content="LEGEND — бесплатный лаунчер Minecraft с оптимизацией FPS, модами, сборками и скинами. Запуск за 8 секунд, +180% к FPS на слабом железе.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -368,7 +368,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .hero__title {
   font-family: var(--font-head);
   font-weight: 700;
-  font-size: clamp(40px, 5.4vw, 74px);
+  font-size: clamp(44px, 5.8vw, 84px);
   line-height: 1.06;
   letter-spacing: -.015em;
   margin-bottom: 26px;
@@ -1801,6 +1801,182 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 }
 .cabinet__actions .btn { flex: 1; justify-content: center; }
 
+/* ==================== атмосферный фон ==================== */
+
+.bg-fx {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.bg-fx__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+}
+.bg-fx__orb--1 {
+  width: 640px; height: 640px;
+  left: -200px; top: -240px;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), .22), transparent 65%);
+  animation: orbFloat 16s ease-in-out infinite alternate;
+}
+.bg-fx__orb--2 {
+  width: 560px; height: 560px;
+  right: -180px; top: 20%;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), .13), transparent 65%);
+  animation: orbFloat 21s ease-in-out infinite alternate-reverse;
+}
+.bg-fx__orb--3 {
+  width: 720px; height: 720px;
+  left: 24%; bottom: -340px;
+  background: radial-gradient(circle, rgba(var(--accent-rgb), .12), transparent 65%);
+  animation: orbFloat 26s ease-in-out infinite alternate;
+}
+@keyframes orbFloat {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(70px, -50px, 0) scale(1.18); }
+}
+.bg-fx__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(var(--accent-rgb), .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--accent-rgb), .05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 85% 65% at 50% 0%, #000 20%, transparent 75%);
+}
+.bg-fx__noise {
+  position: absolute;
+  inset: 0;
+  opacity: .05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+/* ==================== отзывы в кабинете ==================== */
+
+.reviews__badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  margin-left: 8px;
+  border-radius: 100px;
+  background: rgba(var(--accent-rgb), .15);
+  border: 1px solid rgba(var(--accent-rgb), .35);
+  color: var(--accent);
+  font-family: var(--font-head);
+  font-size: 11px;
+  letter-spacing: 0;
+  vertical-align: 2px;
+}
+
+.reviews__list {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 16px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.reviews__list::-webkit-scrollbar { width: 6px; }
+.reviews__list::-webkit-scrollbar-thumb { background: rgba(var(--accent-rgb), .3); border-radius: 100px; }
+
+.review {
+  padding: 13px 15px;
+  border-radius: 13px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .02);
+}
+.review__top {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 7px;
+}
+.review__ava {
+  width: 26px; height: 26px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: rgba(var(--accent-rgb), .16);
+  border: 1px solid rgba(var(--accent-rgb), .35);
+  color: var(--accent);
+  font-family: var(--font-head);
+  font-size: 11px;
+  font-weight: 600;
+}
+.review__top strong {
+  font-family: var(--font-head);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.review__stars {
+  margin-left: auto;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+.review p {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.reviews__empty {
+  padding: 16px;
+  border: 1px dashed var(--line);
+  border-radius: 13px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--muted);
+}
+.reviews__form {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.reviews__form textarea {
+  width: 100%;
+  min-height: 76px;
+  resize: vertical;
+  padding: 13px 15px;
+  border-radius: 13px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .02);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.reviews__form textarea::placeholder { color: var(--muted); opacity: .6; }
+.reviews__form textarea:focus {
+  outline: none;
+  border-color: rgba(var(--accent-rgb), .5);
+}
+.reviews__form .btn { justify-self: start; }
+
+/* поддержка в кабинете */
+.cabinet__support {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  padding: 15px 16px;
+  border-radius: 13px;
+  border: 1px solid rgba(var(--accent-rgb), .22);
+  background: rgba(var(--accent-rgb), .05);
+}
+.cabinet__support-note {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--muted);
+}
+.support-btn svg { flex-shrink: 0; }
+
 /* ==================== тосты ==================== */
 
 .toast {
@@ -2012,6 +2188,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23a3e635'/%3E%3Cpath d='M9 8h4v6h6V8h4v16h-4v-6h-6v6H9z' fill='%230e1210'/%3E%3C/svg%3E">
 </head>
 <body>
+  <!-- атмосферный фон -->
+  <div class="bg-fx" aria-hidden="true">
+    <div class="bg-fx__orb bg-fx__orb--1"></div>
+    <div class="bg-fx__orb bg-fx__orb--2"></div>
+    <div class="bg-fx__orb bg-fx__orb--3"></div>
+    <div class="bg-fx__grid"></div>
+    <div class="bg-fx__noise"></div>
+  </div>
 
   <!-- Шапка -->
   <header class="header" id="header">
@@ -2065,11 +2249,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
         <div class="hero__content">
           <div class="badge reveal">
             <span class="badge__dot"></span>
-            Версия 4.2 — теперь с ускоренным рендером
+            Версия 26.1 — новый лаунчер уже здесь
           </div>
 
           <h1 class="hero__title reveal">
-            Лаунчер,<br>который <span class="accent">не тормозит</span>
+            Легендарный<br><span class="accent">лаунчер</span>
           </h1>
 
           <p class="hero__sub reveal">
@@ -2081,7 +2265,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
           <div class="hero__actions reveal">
             <a href="#download" class="btn btn--accent btn--big js-download">
               Скачать лаунчер
-              <span class="btn__size">42 МБ</span>
+              <span class="btn__size">85 МБ</span>
             </a>
             <a href="#boost" class="btn btn--ghost btn--big">
               Как это работает
@@ -2394,33 +2578,13 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
           <div class="download__glow" aria-hidden="true"></div>
           <div class="download__content">
             <span class="section__label section__label--dark">Скачать</span>
-            <h2>Установи LEGEND<br>за пару минут</h2>
-            <p>Лаунчер весит 42 МБ и работает на Windows 7 и новее, macOS и Linux. Установка — «дальше, дальше, готово».</p>
-
-            <div class="os" id="osTabs">
-              <button class="os__tab is-active" data-os="windows">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4.2l6.2-.9v6H2V4.2zm7-1L16 2v7.2H9V3.2zM2 10.1h6.2v6L2 15.2v-5.1zm7 0h7V16l-7-1v-4.9z" fill="currentColor"/></svg>
-                Windows
-              </button>
-              <button class="os__tab" data-os="macos">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M12.6 9.6c0-2 1.6-2.9 1.7-3-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.2 2-1.4 2.4-.4 6 1 8 .6 1 1.4 2 2.4 2 1 0 1.3-.6 2.5-.6 1.1 0 1.5.6 2.5.6s1.7-1 2.3-1.9c.7-1.1 1-2.2 1-2.2s-1.9-.8-1.7-3.3zM10.7 3.3c.5-.7.9-1.6.8-2.5-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.4.8.1 1.7-.4 2.3-1.1z" fill="currentColor"/></svg>
-                macOS
-              </button>
-              <button class="os__tab" data-os="linux">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.5c2 0 2.6 1.6 2.6 3.2 0 1.9.8 2.7 1.8 4.2 1.2 1.7 2.1 3.2 2.1 4.7 0 1.7-1.3 2.4-2.7 2.4-.9 0-1.5-.3-2.2-.3-.5 0-1 .3-1.6.3s-1.3-.3-2.2-.3c-1.4 0-2.7.7-2.7 2.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="7.3" cy="6.4" r=".9" fill="currentColor"/><circle cx="10.7" cy="6.4" r=".9" fill="currentColor"/><path d="M6.6 9.2c.7.8 3.1.8 3.8 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                Linux
-              </button>
-            </div>
+            <h2>Установи легендарный<br>лаунчер за пару минут</h2>
+            <p>Один файл, одна кнопка — и ты в игре. Установка — «дальше, дальше, готово».</p>
 
             <a href="#" class="btn btn--accent btn--big download__btn js-download" id="downloadBtn">
-              <span class="download__btn-label">Скачать для Windows</span>
-              <span class="btn__size">.exe · 42 МБ</span>
+              <span class="download__btn-label">Скачать лаунчер</span>
+              <span class="btn__size">.exe · 85 МБ</span>
             </a>
-
-            <div class="download__note">
-              <span class="download__note-mark"></span>
-              <p id="osNote">Windows 7 / 8 / 10 / 11 · 64-bit · 4 ГБ ОЗУ</p>
-            </div>
 
             <div class="download__reg">
               <span class="download__reg-mark"></span>
@@ -2428,7 +2592,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
             </div>
 
             <div class="download__links">
-              <a href="#" class="download__mirror js-mirror">Зеркало: скачать через Яндекс.Диск</a>
+              <a href="#" class="download__mirror js-mirror">Зеркало: Beta 2.3.2 через Яндекс.Диск</a>
               <a href="https://dalink.to/doxierock" target="_blank" rel="noopener noreferrer" class="download__support">
                 <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 14S2 10.4 2 6.2C2 4.1 3.6 2.5 5.5 2.5c1.2 0 2.2.6 2.5 1.4.3-.8 1.3-1.4 2.5-1.4 1.9 0 3.5 1.6 3.5 3.7C14 10.4 8 14 8 14z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
                 Поддержать проект
@@ -2684,7 +2848,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
         </div>
 
         <div class="cabinet__stats">
-          <div class="cabinet__stat"><strong>4.2</strong><span>версия клиента</span></div>
+          <div class="cabinet__stat"><strong>26.1</strong><span>версия клиента</span></div>
           <div class="cabinet__stat"><strong>0</strong><span>сборок установлено</span></div>
           <div class="cabinet__stat"><strong>0 ч</strong><span>в игре</span></div>
         </div>
@@ -2699,6 +2863,27 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
           <button class="theme" data-theme-value="grape"><span class="theme__dots"><i style="background:#b18cff"></i><i style="background:#8f63f0"></i></span>Лаванда</button>
           <button class="theme" data-theme-value="rose"><span class="theme__dots"><i style="background:#ff6fa5"></i><i style="background:#e04a86"></i></span>Малина</button>
           <button class="theme" data-theme-value="mono"><span class="theme__dots"><i style="background:#d7ded3"></i><i style="background:#a9b3a3"></i></span>Графит</button>
+        </div>
+
+        <h4 class="cabinet__title">Отзывы <span class="reviews__badge" id="revCount">0</span></h4>
+        <p class="cabinet__sub">Расскажи, как тебе лаунчер — твой отзыв увидят все.</p>
+
+        <div class="reviews__list" id="reviewsList"></div>
+
+        <form class="reviews__form" id="reviewForm">
+          <textarea id="reviewText" placeholder="Как тебе LEGEND? Расскажи..." maxlength="300" required></textarea>
+          <button class="btn btn--accent btn--small" type="submit">Отправить отзыв</button>
+        </form>
+
+        <h4 class="cabinet__title">Поддержка</h4>
+        <p class="cabinet__sub">Что-то не работает или есть идея? Пиши — отвечаю лично.</p>
+
+        <div class="cabinet__support">
+          <a href="https://dalink.to/doxierock" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--small support-btn">
+            <svg width="15" height="15" viewBox="0 0 18 18" fill="none"><path d="M2.5 4.5a2 2 0 012-2h9a2 2 0 012 2v6a2 2 0 01-2 2H8l-3.5 3v-3h-.5a2 2 0 01-2-2v-6z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M6 7.5h6M6 10h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Написать в поддержку
+          </a>
+          <span class="cabinet__support-note">Отвечаю лично, обычно в течение дня</span>
         </div>
 
         <div class="cabinet__actions">
@@ -2718,7 +2903,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
    GitHub Release: https://github.com/user/repo/releases/download/v1/legend-setup.exe
    На сервере с Node.js файл отдаётся защищённо из папки private/.
    ========================================================= */
-const CLIENT_DOWNLOAD_URL = 'https://wertigo.ru/api/shared_files/74295e70-2a02-4ebf-a02e-2e47d51f194a/files/74295e70-2a02-4ebf-a02e-2e47d51f194a';
+const CLIENT_DOWNLOAD_URL = 'https://wertigo.ru/api/shared_files/d22f18f6-16a1-4a87-ac9c-831c4defd03c/files/d22f18f6-16a1-4a87-ac9c-831c4defd03c';
 const CLIENT_MIRROR_URL = 'https://downloader.disk.yandex.ru/disk/b898941aaf2622c40d0a809b0b7dd4c00dc3c30dc3619dd9b0fbc16128adfd65/6af9006b/QZnsfSP_Ly2YlWVebtyuIUALgXJ5iFxzFyRLCXr2dh7eoPQmflkqGESwEKRxVKQXEHZAFwLY0YGrxG3I1DUxXQ%3D%3D?uid=0&filename=Legend%20Launcher%20Setup%20Beta%202.3.2.exe&disposition=attachment&hash=YPgMZZuTEcrHz5Y/MZ96dsEVusb1TvtpQFywIVpRVkwYwSATdDIRHCvyMq/wVZ0sq/J6bpmRyOJonT3VoXnDag%3D%3D&limit=0&content_type=application%2Fvnd.microsoft.portable-executable&owner_uid=1530762251&fsize=88907440&hid=6fa12024547daf31b338e767e2483ec1&media_type=executable&tknv=v3&is_direct_zip_experiment=1';
 
 const THEME_KEY = 'legend_theme';
@@ -2830,32 +3015,6 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.setProperty('--my', `${e.clientY - rect.top}px`);
     });
   });
-
-  /* ---------- переключение ОС в блоке скачивания ---------- */
-  const osData = {
-    windows: { label: 'Скачать для Windows', size: '.exe · 42 МБ', note: 'Windows 7 / 8 / 10 / 11 · 64-bit · 4 ГБ ОЗУ' },
-    macos:   { label: 'Скачать для macOS',   size: '.dmg · 48 МБ', note: 'macOS 11 Big Sur и новее · Intel / Apple Silicon' },
-    linux:   { label: 'Скачать для Linux',   size: '.AppImage · 45 МБ', note: 'Ubuntu 20.04+, Fedora, Arch · 64-bit · 4 ГБ ОЗУ' }
-  };
-
-  const tabs = document.querySelectorAll('.os__tab');
-  const btnLabel = document.querySelector('.download__btn-label');
-  const btnSize = document.querySelector('#downloadBtn .btn__size');
-  const osNote = document.getElementById('osNote');
-
-  const ua = navigator.userAgent.toLowerCase();
-  if (ua.includes('mac')) setActive('macos');
-  else if (ua.includes('linux') && !ua.includes('android')) setActive('linux');
-
-  tabs.forEach((tab) => tab.addEventListener('click', () => setActive(tab.dataset.os)));
-
-  function setActive(os) {
-    tabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.os === os));
-    const data = osData[os];
-    btnLabel.textContent = data.label;
-    btnSize.textContent = data.size;
-    osNote.textContent = data.note;
-  }
 
   /* ---------- тосты ---------- */
   const toastEl = document.createElement('div');
@@ -3450,6 +3609,60 @@ document.addEventListener('DOMContentLoaded', () => {
   }));
 
   applyTheme(localStorage.getItem(THEME_KEY));
+
+  /* ---------- отзывы в кабинете ---------- */
+  const REVIEWS_KEY = 'legend_reviews';
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  const loadReviews = () => {
+    try { return JSON.parse(localStorage.getItem(REVIEWS_KEY)) || []; } catch { return []; }
+  };
+
+  const renderReviews = () => {
+    const list = document.getElementById('reviewsList');
+    const count = document.getElementById('revCount');
+    const reviews = loadReviews();
+    if (count) count.textContent = String(reviews.length);
+    if (!list) return;
+    if (!reviews.length) {
+      list.innerHTML = '<div class="reviews__empty">Пока пусто — оставь первый отзыв!</div>';
+      return;
+    }
+    list.innerHTML = reviews.slice(-10).reverse().map((r) => `
+      <div class="review">
+        <div class="review__top">
+          <span class="review__ava">${esc((r.name || 'И').charAt(0).toUpperCase())}</span>
+          <strong>${esc(r.name || 'Игрок')}</strong>
+          <span class="review__stars">★★★★★</span>
+        </div>
+        <p>${esc(r.text)}</p>
+      </div>
+    `).join('');
+  };
+
+  const reviewForm = document.getElementById('reviewForm');
+  if (reviewForm) {
+    reviewForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const me = currentUser();
+      if (!me) {
+        setAuthView('login');
+        openModal(authModal);
+        showToast('Войди, чтобы оставить отзыв');
+        return;
+      }
+      const input = document.getElementById('reviewText');
+      const text = (input.value || '').trim();
+      if (text.length < 3) { showToast('Напиши чуть подробнее'); return; }
+      const reviews = loadReviews();
+      reviews.push({ name: me.nickname || (me.email || 'Игрок').split('@')[0], text, at: Date.now() });
+      localStorage.setItem(REVIEWS_KEY, JSON.stringify(reviews.slice(-30)));
+      input.value = '';
+      renderReviews();
+      showToast('Спасибо за отзыв!');
+    });
+    renderReviews();
+  }
 
   /* ---------- определяем режим и проверяем сессию ---------- */
   (async () => {
